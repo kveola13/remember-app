@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Handleliste
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="logOut()">
+        <ion-icon name="exit"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let post of posts | async">
+      <ion-label>{{post.body}}</ion-label>
+      <ion-checkbox [checked]="post.purchased" (click)="checkPurchase(post)"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+  <ion-input type="text" placeholder="Enter item name" [(ngModel)]="itemInput"></ion-input>
+  <ion-buttons>
+    <button end ion-button (click)="addItem(itemInput)">Add item</button>
+    <button ion-button (click)="removeItem(itemInput)">Remove item</button>
+  </ion-buttons>
+</ion-content>
